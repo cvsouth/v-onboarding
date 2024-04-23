@@ -94,7 +94,7 @@ export default defineComponent({
 
     const stepElement = ref<HTMLElement>();
 
-    if (mergedOptions.value.focusTrap) {
+    if (mergedOptions.value?.focusTrap) {
       const focusTrap = useFocusTrap(stepElement)
       watch(show, async (value) => {
         await nextTick()
