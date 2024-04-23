@@ -72,7 +72,7 @@ export default defineComponent({
     const state = inject(STATE_INJECT_KEY, {} as Ref<OnboardingState>)
     const { step, isFirstStep, isLastStep, options, next, previous, exit: stateExit, finish } = state.value
 
-    const mergedOptions = computed(() => merge({}, options?.value, step.value.options))
+    const mergedOptions = computed(() => merge({}, options?.value, step.value?.options))
 
     const isButtonVisible = computed(() => {
       return {
