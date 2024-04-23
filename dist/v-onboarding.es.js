@@ -900,7 +900,10 @@ const _sfc_main$1 = defineComponent({
     const show = ref(false);
     const state = inject(STATE_INJECT_KEY, {});
     const { step, isFirstStep, isLastStep, options, next, previous, exit: stateExit, finish } = state.value;
-    const mergedOptions = computed(() => merge({}, options == null ? void 0 : options.value, step.value.options));
+    const mergedOptions = computed(() => {
+      var _a2;
+      return merge({}, options == null ? void 0 : options.value, (_a2 = step.value) == null ? void 0 : _a2.options);
+    });
     const isButtonVisible = computed(() => {
       var _a2, _b, _c;
       return {
