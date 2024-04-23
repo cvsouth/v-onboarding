@@ -896,29 +896,30 @@ var _export_sfc = (sfc, props) => {
 const _sfc_main$1 = defineComponent({
   name: "VOnboardingStep",
   setup() {
+    var _a;
     const show = ref(false);
     const state = inject(STATE_INJECT_KEY, {});
     const { step, isFirstStep, isLastStep, options, next, previous, exit: stateExit, finish } = state.value;
     const mergedOptions = computed(() => merge({}, options == null ? void 0 : options.value, step.value.options));
     const isButtonVisible = computed(() => {
-      var _a, _b, _c;
+      var _a2, _b, _c;
       return {
-        previous: !((_a = mergedOptions.value.hideButtons) == null ? void 0 : _a.previous),
+        previous: !((_a2 = mergedOptions.value.hideButtons) == null ? void 0 : _a2.previous),
         next: !((_b = mergedOptions.value.hideButtons) == null ? void 0 : _b.next),
         exit: !((_c = mergedOptions.value.hideButtons) == null ? void 0 : _c.exit)
       };
     });
     const buttonLabels = computed(() => {
-      var _a, _b, _c, _d, _e, _f;
+      var _a2, _b, _c, _d, _e, _f;
       return {
-        previous: (_b = (_a = mergedOptions.value) == null ? void 0 : _a.labels) == null ? void 0 : _b.previousButton,
+        previous: (_b = (_a2 = mergedOptions.value) == null ? void 0 : _a2.labels) == null ? void 0 : _b.previousButton,
         next: (_d = (_c = mergedOptions.value) == null ? void 0 : _c.labels) == null ? void 0 : _d.nextButton,
         finish: (_f = (_e = mergedOptions.value) == null ? void 0 : _e.labels) == null ? void 0 : _f.finishButton
       };
     });
     const { updatePath, path } = useSvgOverlay();
     const stepElement = ref();
-    if (mergedOptions.value.focusTrap) {
+    if ((_a = mergedOptions.value) == null ? void 0 : _a.focusTrap) {
       const focusTrap = useFocusTrap(stepElement);
       watch(show, async (value) => {
         await nextTick();
@@ -930,9 +931,9 @@ const _sfc_main$1 = defineComponent({
       });
     }
     const attachElement = async () => {
-      var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m;
+      var _a2, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m;
       await nextTick();
-      const element = useGetElement((_b = (_a = step == null ? void 0 : step.value) == null ? void 0 : _a.attachTo) == null ? void 0 : _b.element);
+      const element = useGetElement((_b = (_a2 = step == null ? void 0 : step.value) == null ? void 0 : _a2.attachTo) == null ? void 0 : _b.element);
       if (element && stepElement.value) {
         show.value = true;
         if ((_d = (_c = mergedOptions.value) == null ? void 0 : _c.scrollToStep) == null ? void 0 : _d.enabled) {
@@ -949,9 +950,9 @@ const _sfc_main$1 = defineComponent({
     };
     watch(step, attachElement, { immediate: true });
     const exit = () => {
-      var _a;
+      var _a2;
       stateExit();
-      if ((_a = mergedOptions.value) == null ? void 0 : _a.autoFinishByExit) {
+      if ((_a2 = mergedOptions.value) == null ? void 0 : _a2.autoFinishByExit) {
         finish();
       }
     };
