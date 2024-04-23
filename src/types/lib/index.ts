@@ -36,6 +36,7 @@ interface SvgOverlayOptions {
 interface VOnboardingWrapperOptions {
   popper?: Parameters<typeof createPopper>[2];
   overlay?: SvgOverlayOptions;
+  focusTrap?: boolean;
   scrollToStep?: {
     enabled?: boolean;
     options?: ScrollIntoViewOptions;

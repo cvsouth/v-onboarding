@@ -2,6 +2,7 @@ import { VOnboardingWrapperOptions } from "../types/lib/VOnboardingWrapper";
 
 export const defaultVOnboardingWrapperOptions: VOnboardingWrapperOptions = {
   popper: {},
+  focusTrap: false,
   overlay: {
     enabled: true,
     padding: 0,

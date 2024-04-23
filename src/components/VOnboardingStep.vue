@@ -93,15 +93,19 @@ export default defineComponent({
     const { updatePath, path } = useSvgOverlay();
 
     const stepElement = ref<HTMLElement>();
-    const focusTrap = useFocusTrap(stepElement)
-    watch(show, async (value) => {
-      await nextTick()
-      if (value) {
-        focusTrap.activate()
-      } else {
-        focusTrap.deactivate()
-      }
-    })
+
+    if (mergedOptions.value.focusTrap) {
+      const focusTrap = useFocusTrap(stepElement)
+      watch(show, async (value) => {
+        await nextTick()
+        if (value) {
+          focusTrap.activate()
+        } else {
+          focusTrap.deactivate()
+        }
+      })
+    }
+
     const attachElement = async () => {
       await nextTick()
       const element = useGetElement(step?.value?.attachTo?.element);
